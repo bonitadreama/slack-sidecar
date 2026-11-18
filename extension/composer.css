@@ -1,0 +1,15 @@
+.sidecar-ghost {
+  position: fixed !important;
+  z-index: 2147483646 !important;
+  display: block;
+  overflow: hidden;
+  opacity: 0.57;
+  pointer-events: none;
+  user-select: none;
+  white-space: pre;
+  text-overflow: ellipsis;
+}
+
+.sidecar-ghost[hidden] {
+  display: none !important;
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sidecar | Composer preview</title>
+  <link rel="stylesheet" href="/preview.css">
+  <link rel="stylesheet" href="/composer.css">
+  <script src="/preview.js" defer></script>
+  <script src="/composer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Sidecar home"><span aria-hidden="true">↳</span> Sidecar</a>
+    <span class="scope"><i></i> Local preview</span>
+  </header>
+  <main>
+    <header class="intro">
+      <h1>Composer preview</h1>
+      <p>Start a message and pause to see a suggestion.</p>
+    </header>
+    <section class="workspace" aria-label="Practice conversation">
+      <div class="conversation">
+        <div class="avatar" aria-hidden="true">J</div>
+        <div>
+          <div class="author">Jamie</div>
+          <p>Could you send over a quick update after the design review?</p>
+        </div>
+      </div>
+      <ul class="messages" aria-label="Preview messages"></ul>
+      <form class="composer">
+        <div class="editor" data-qa="message_input" contenteditable="true" role="textbox"
+          aria-label="Message draft" aria-multiline="true" aria-describedby="shortcut"></div>
+        <div class="actions">
+          <span id="shortcut"><kbd>Tab</kbd> accept <span class="divider"></span> <kbd>Esc</kbd> dismiss</span>
+          <button type="submit">Send in preview <span aria-hidden="true">↑</span></button>
+        </div>
+      </form>
+      <div class="footer">
+        <button type="button" class="example">Try an example draft <span aria-hidden="true">↗</span></button>
+        <span class="status" role="status"></span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

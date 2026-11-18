@@ -1,0 +1,6 @@
+.codex-attachments/
+.env*
+node_modules/
+output/
+.playwright-cli/
+*.log
