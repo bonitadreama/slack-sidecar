@@ -6,22 +6,43 @@ const examples = [
   "Can we move our check-in to"
 ];
 let example = 0;
+let provider;
+
+async function loadProvider() {
+  const label = document.querySelector("#provider");
+  try {
+    const response = await fetch("/status");
+    if (!response.ok) throw new Error();
+    ({ provider } = await response.json());
+    label.textContent = provider === "openai" ? "OpenAI API" : "Local · Ollama";
+    if (provider === "openai") {
+      const note = document.querySelector("#provider-note");
+      note.textContent = "The current draft is sent to OpenAI using your API key.";
+      note.hidden = false;
+    }
+  } catch {
+    label.textContent = "Companion unavailable";
+  }
+}
+
+loadProvider();
 
 globalThis.requestSidecar = async (draft, signal) => {
-  status.textContent = "Thinking locally…";
+  if (!provider) return "";
+  status.textContent = provider === "openai" ? "Asking OpenAI…" : "Thinking locally…";
   try {
     const response = await fetch("/complete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ draft }),
+      body: JSON.stringify({ draft, provider }),
       signal
     });
-    if (!response.ok) throw new Error("Completion unavailable");
-    const { suffix } = await response.json();
+    const { suffix, error } = await response.json();
+    if (!response.ok) throw new Error(error);
     if (!signal.aborted) status.textContent = suffix ? "" : "No suggestion this time.";
     return suffix;
-  } catch {
-    if (!signal.aborted) status.textContent = "Local model unavailable. Check the companion terminal.";
+  } catch (error) {
+    if (!signal.aborted) status.textContent = error.message || "Prediction unavailable.";
     return "";
   }
 };

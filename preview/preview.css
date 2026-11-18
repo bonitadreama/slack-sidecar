@@ -56,6 +56,7 @@ main { width: min(780px, calc(100% - 40px)); margin: clamp(45px, 11vh, 108px) au
 .intro { margin-bottom: 30px; }
 h1 { margin: 0; font-size: clamp(38px, 7vw, 68px); font-weight: 650; letter-spacing: -0.065em; line-height: 1.05; }
 .intro p { color: #53635a; margin: 12px 0 0; }
+.intro .provider-note { font-size: 14px; }
 .workspace { border-top: 1px solid #d6dfd6; }
 .conversation { display: flex; gap: 12px; padding: 25px 0; align-items: flex-start; }
 .conversation p { margin: 3px 0 0; line-height: 1.5; }

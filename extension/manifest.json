@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Sidecar for Slack",
-  "version": "0.1.0",
-  "description": "Local, Tab-to-accept draft suggestions in Slack Web.",
-  "action": { "default_title": "Sidecar: enable on this Slack tab" },
+  "version": "0.2.0",
+  "description": "Tab-to-accept draft suggestions in Slack Web with Ollama or OpenAI.",
+  "action": { "default_title": "Sidecar", "default_popup": "popup.html" },
   "host_permissions": ["http://127.0.0.1:4317/*"],
   "background": { "service_worker": "background.js" },
   "content_scripts": [{

@@ -1,9 +1,13 @@
 globalThis.sidecarEnabled = false;
-chrome.runtime.onMessage.addListener(({ type }, sender, respond) => {
-  if (type !== "sidecar-toggle" || sender.id !== chrome.runtime.id) return;
-  globalThis.sidecarEnabled = !globalThis.sidecarEnabled;
-  if (!globalThis.sidecarEnabled) globalThis.clearSidecar?.();
-  respond({ enabled: globalThis.sidecarEnabled });
+let activeProvider = null;
+chrome.runtime.onMessage.addListener(({ type, provider }, sender, respond) => {
+  if (sender.id !== chrome.runtime.id) return;
+  if (type === "sidecar-set-provider" && [null, "ollama", "openai"].includes(provider)) {
+    globalThis.clearSidecar?.();
+    activeProvider = provider;
+    globalThis.sidecarEnabled = Boolean(provider);
+  }
+  if (type === "sidecar-state" || type === "sidecar-set-provider") respond({ provider: activeProvider });
 });
 
 globalThis.requestSidecar = (draft, signal) => new Promise(resolve => {
@@ -25,7 +29,7 @@ globalThis.requestSidecar = (draft, signal) => new Promise(resolve => {
       resolve(suffix);
       port.disconnect();
     });
-    port.postMessage({ draft });
+    port.postMessage({ draft, provider: activeProvider });
   } catch {
     // Slack tabs opened before an extension reload may need a refresh.
     resolve("");

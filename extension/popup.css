@@ -1,0 +1,23 @@
+body {
+  box-sizing: border-box;
+  width: 290px;
+  margin: 0;
+  padding: 18px;
+  background: #f7f8f4;
+  color: #202c26;
+  font: 14px/1.5 system-ui, sans-serif;
+}
+
+h1 { margin: 0; font-size: 19px; }
+p { margin: 8px 0 14px; }
+button {
+  background: #164c33;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  padding: 8px 12px;
+}
+button:disabled { opacity: 0.55; cursor: default; }
+button:focus-visible { outline: 2px solid #238354; outline-offset: 3px; }

@@ -12,12 +12,13 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Sidecar home"><span aria-hidden="true">↳</span> Sidecar</a>
-    <span class="scope"><i></i> Local preview</span>
+    <span class="scope"><i aria-hidden="true"></i><span id="provider">Checking provider…</span></span>
   </header>
   <main>
     <header class="intro">
       <h1>Composer preview</h1>
       <p>Start a message and pause to see a suggestion.</p>
+      <p class="provider-note" id="provider-note" hidden></p>
     </header>
     <section class="workspace" aria-label="Practice conversation">
       <div class="conversation">
