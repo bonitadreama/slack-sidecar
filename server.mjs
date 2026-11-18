@@ -13,7 +13,7 @@ const localEnv = provider === "openai"
   }))
   : {};
 const apiKey = provider === "openai" ? (localEnv.OPENAI_API_KEY ?? process.env.OPENAI_API_KEY)?.trim() : undefined;
-const apiModel = localEnv.OPENAI_MODEL || process.env.OPENAI_MODEL || "gpt-5.4-nano";
+const apiModel = localEnv.OPENAI_MODEL || process.env.OPENAI_MODEL || "gpt-6.2-sol";
 if (provider === "openai" && !apiKey) {
   console.error("Set OPENAI_API_KEY in .env.local or the environment before starting OpenAI mode.");
   process.exit(1);

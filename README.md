@@ -23,7 +23,7 @@ Drafts stay on your computer. The first prediction can take a few seconds while 
 
 ### OpenAI API mode
 
-Save your own [OpenAI API key](https://platform.openai.com/api-keys) as `OPENAI_API_KEY` in an ignored `.env.local` file in the project folder. You can also supply it through the environment. A value in `.env.local` takes precedence. The default model is `gpt-5.4-nano`. Set `OPENAI_MODEL` in the same file or environment to use a different compatible model.
+Save your own [OpenAI API key](https://platform.openai.com/api-keys) as `OPENAI_API_KEY` in an ignored `.env.local` file in the project folder. You can also supply it through the environment. A value in `.env.local` takes precedence. The default model is `gpt-6.2-sol`. Set `OPENAI_MODEL` in the same file or environment to use a different compatible model.
 
 ```sh
 npm run start:openai
